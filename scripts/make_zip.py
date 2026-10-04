@@ -40,6 +40,17 @@ CHECKPOINTS = [
     "account/15_set_details_code",
     "account/16_user_service",
     "account/17_account_navigation",
+    "assessments/18_assessments_table",
+    "assessments/19_add_design",
+    "assessments/20_add_code",
+    "assessments/21_assessment_service",
+    "assessments/22_unauthorised_access",
+    "assessments/23_home_design",
+    "assessments/24_home_code",
+    "assessments/25_complete",
+    "assessments/26_edit",
+    "assessments/27_calendar",
+    "assessments/28_welcome",
 ]
 
 # Files a lesson tells students to delete.

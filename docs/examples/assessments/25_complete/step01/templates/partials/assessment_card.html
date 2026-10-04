@@ -1,0 +1,15 @@
+<article>
+    <header>
+        <strong>{{ assessment.subject }}</strong>
+    </header>
+    <p>{{ assessment.details }}</p>
+    <p><small>Start: {{ assessment.start_date | au_date }} | Due: {{ assessment.due_date | au_date }}</small></p>
+    <footer class="card-footer">
+        <label>
+            <input type="checkbox" name="completed"
+                   hx-post="/assessments/{{ assessment.id }}/complete"
+                   hx-target="closest article" hx-swap="outerHTML">
+            Completed
+        </label>
+    </footer>
+</article>

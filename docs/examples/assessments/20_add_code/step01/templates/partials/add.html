@@ -1,0 +1,30 @@
+<article>
+    <h1>Add Assessment</h1>
+    <form hx-post="/add" hx-target="#content">
+        <label>
+            Subject
+            <input type="text" name="subject" value="{{ values.subject }}" placeholder="e.g. Maths">
+        </label>
+        <label>
+            Details
+            <textarea name="details" placeholder="e.g. Algebra test">{{ values.details }}</textarea>
+        </label>
+        <div class="grid">
+            <label>
+                Start date
+                <input type="date" name="start_date" value="{{ values.start_date }}">
+            </label>
+            <label>
+                Due date
+                <input type="date" name="due_date" value="{{ values.due_date }}">
+            </label>
+        </div>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if message %}
+        <p class="success">{{ message }}</p>
+        {% endif %}
+        <button type="submit">Save</button>
+    </form>
+</article>

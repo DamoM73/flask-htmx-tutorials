@@ -1,0 +1,35 @@
+<article>
+    <form hx-post="/assessments/{{ assessment.id }}/edit" hx-target="closest article" hx-swap="outerHTML">
+        <label>
+            Subject
+            <input type="text" name="subject" value="{{ values.subject }}">
+        </label>
+        <label>
+            Details
+            <textarea name="details">{{ values.details }}</textarea>
+        </label>
+        <div class="grid">
+            <label>
+                Start date
+                <input type="date" name="start_date" value="{{ values.start_date }}">
+            </label>
+            <label>
+                Due date
+                <input type="date" name="due_date" value="{{ values.due_date }}">
+            </label>
+        </div>
+        <label>
+            <input type="checkbox" name="completed">
+            Completed
+        </label>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <div class="grid">
+            <button type="submit">Save</button>
+            <button type="button" class="secondary"
+                    hx-get="/assessments/{{ assessment.id }}"
+                    hx-target="closest article" hx-swap="outerHTML">Cancel</button>
+        </div>
+    </form>
+</article>
