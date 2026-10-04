@@ -1,0 +1,12 @@
+<nav id="nav" {% if oob %}hx-swap-oob="true"{% endif %}>
+    <ul>
+        <li><a href="/" hx-get="/" hx-target="#content" hx-push-url="true"><strong>StudyM8</strong></a></li>
+    </ul>
+    <ul hx-target="#content" hx-push-url="true">
+        <li><a href="/" hx-get="/" {% if title == "Home" %}aria-current="page"{% endif %}>Home</a></li>
+        <li><a href="/add" hx-get="/add" {% if title == "Add" %}aria-current="page"{% endif %}>Add</a></li>
+        <li><a href="/calendar" hx-get="/calendar" {% if title == "Calendar" %}aria-current="page"{% endif %}>Calendar</a></li>
+        <li><a href="/account" hx-get="/account" {% if title == "Account" %}aria-current="page"{% endif %}>Account</a></li>
+        <li><a href="/register" hx-get="/register" {% if title == "Register" %}aria-current="page"{% endif %}>Register</a></li>
+    </ul>
+</nav>

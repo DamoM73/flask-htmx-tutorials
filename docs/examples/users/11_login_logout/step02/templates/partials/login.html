@@ -1,0 +1,17 @@
+<article>
+    <h1>Login</h1>
+    <form hx-post="/login" hx-target="#content">
+        <label>
+            Email
+            <input type="email" name="email" value="{{ email }}" required>
+        </label>
+        <label>
+            Password
+            <input type="password" name="password" required>
+        </label>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <button type="submit">Login</button>
+    </form>
+</article>

@@ -30,6 +30,11 @@ CHECKPOINTS = [
     "shell/05_htmx_links",
     "shell/06_page_titles",
     "shell/07_active_link",
+    "users/08_databases_sql",
+    "users/09_flask_sqlite",
+    "users/10_register",
+    "users/11_login_logout",
+    "users/12_link_visibility",
 ]
 
 # Files a lesson tells students to delete.
