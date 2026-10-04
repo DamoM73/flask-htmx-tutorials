@@ -1,0 +1,139 @@
+from flask import Flask, make_response, render_template, request
+from flask_login import LoginManager, UserMixin, current_user, login_user, logout_user
+from werkzeug.security import check_password_hash, generate_password_hash
+
+import db
+
+app = Flask(__name__)
+app.config["SECRET_KEY"] = "change-this-to-a-long-random-string"
+app.cli.add_command(db.init_db_command)
+
+login_manager = LoginManager(app)
+
+
+class User(UserMixin):
+    def __init__(self, row):
+        self.id = row["id"]
+        self.email = row["email"]
+        self.first_name = row["first_name"]
+        self.last_name = row["last_name"]
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    conn = db.get_db()
+    row = conn.execute(
+        "SELECT id, email, first_name, last_name FROM users WHERE id = ?",
+        (user_id,),
+    ).fetchone()
+    conn.close()
+    if row is None:
+        return None
+    return User(row)
+
+
+def render_page(template, title, push_url=None, **context):
+    if request.headers.get("HX-Request"):
+        html = render_template("fragment.html", page=template, title=title, **context)
+    else:
+        html = render_template("base.html", page=template, title=title, **context)
+    response = make_response(html)
+    response.headers["Vary"] = "HX-Request"
+    if push_url:
+        response.headers["HX-Push-Url"] = push_url
+    return response
+
+
+@app.route("/")
+def index():
+    return render_page("partials/home.html", "Home")
+
+
+@app.route("/add")
+def add():
+    return render_page("partials/add.html", "Add")
+
+
+@app.route("/calendar")
+def calendar():
+    return render_page("partials/calendar.html", "Calendar")
+
+
+@app.route("/account")
+def account():
+    return render_page("partials/account.html", "Account", user=current_user)
+
+
+@app.route("/account/details", methods=["GET", "POST"])
+def set_details():
+    if request.method == "GET":
+        return render_page("partials/set_details.html", "Account", values=current_user)
+    first_name = request.form["first_name"].strip()
+    last_name = request.form["last_name"].strip()
+    if not first_name or not last_name:
+        return render_page("partials/set_details.html", "Account", values=request.form,
+                           error="Please enter your first and last name.")
+    conn = db.get_db()
+    conn.execute(
+        "UPDATE users SET first_name = ?, last_name = ? WHERE id = ?",
+        (first_name, last_name, current_user.id),
+    )
+    conn.commit()
+    conn.close()
+    user = load_user(current_user.id)
+    return render_page("partials/account.html", "Account", push_url="/account", user=user)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "GET":
+        return render_page("partials/register.html", "Register")
+    email = request.form["email"].strip().lower()
+    password = request.form["password"]
+    confirm = request.form["confirm"]
+    error = None
+    if not email or not password:
+        error = "Please enter an email and a password."
+    elif len(password) < 8:
+        error = "Your password needs at least 8 characters."
+    elif password != confirm:
+        error = "The passwords don't match."
+    if error:
+        return render_page("partials/register.html", "Register", error=error, email=email)
+    conn = db.get_db()
+    existing = conn.execute("SELECT id FROM users WHERE email = ?", (email,)).fetchone()
+    if existing is not None:
+        conn.close()
+        return render_page("partials/register.html", "Register",
+                           error="That email is already registered.", email=email)
+    conn.execute(
+        "INSERT INTO users (email, password_hash) VALUES (?, ?)",
+        (email, generate_password_hash(password)),
+    )
+    conn.commit()
+    row = conn.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
+    conn.close()
+    login_user(User(row))
+    return render_page("partials/home.html", "Home", push_url="/")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "GET":
+        return render_page("partials/login.html", "Login")
+    email = request.form["email"].strip().lower()
+    password = request.form["password"]
+    conn = db.get_db()
+    row = conn.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
+    conn.close()
+    if row is None or not check_password_hash(row["password_hash"], password):
+        return render_page("partials/login.html", "Login",
+                           error="Incorrect email or password.", email=email)
+    login_user(User(row))
+    return render_page("partials/home.html", "Home", push_url="/")
+
+
+@app.route("/logout", methods=["POST"])
+def logout():
+    logout_user()
+    return render_page("partials/login.html", "Login", push_url="/login")

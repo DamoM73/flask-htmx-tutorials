@@ -18,7 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from make_zip import checkpoints  # noqa: E402
 
-ROUTES = ["/", "/add", "/calendar", "/account", "/register", "/login"]
+ROUTES = ["/", "/add", "/calendar", "/account", "/register", "/login", "/account/details"]
 
 TEST = r'''
 import sys
@@ -53,6 +53,16 @@ if 'route("/login"' in source:
         client.post("/logout", headers=HX)
         page = client.get("/", headers=HX).data
         assert b"Register" in page and b"Logout" not in page, "menu not showing logged-out links"
+if 'route("/account/details"' in source:
+    client.post("/login", data={"email": "sam@school.com", "password": "password1"}, headers=HX)
+    page = client.get("/account/details", headers=HX).data
+    assert b"first_name" in page, "set details form missing"
+    if 'request.method == "GET"' in source.split('def set_details')[1].split('@app.route')[0]:
+        bad = client.post("/account/details", data={"first_name": "", "last_name": "Lee"}, headers=HX)
+        assert b"first and last name" in bad.data
+        good = client.post("/account/details", data={"first_name": "Sam", "last_name": "Lee"}, headers=HX)
+        assert b"Sam" in good.data and b"Lee" in good.data, "names not saved"
+        assert b"Sam" in client.get("/account", headers=HX).data
 for route in routes:
     full = client.get(route)
     assert full.status_code == 200, f"{route} returned {full.status_code}"

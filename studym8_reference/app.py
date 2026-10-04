@@ -81,7 +81,7 @@ def register():
     user_service.create_user(email, password)
     login_user(user_service.check_login(email, password))
     return render_page("partials/set_details.html", "Account", push_url="/account/details",
-                       user=current_user)
+                       values=current_user)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -114,11 +114,11 @@ def account():
 @login_required
 def set_details():
     if request.method == "GET":
-        return render_page("partials/set_details.html", "Account", user=current_user)
+        return render_page("partials/set_details.html", "Account", values=current_user)
     first_name = request.form["first_name"].strip()
     last_name = request.form["last_name"].strip()
     if not first_name or not last_name:
-        return render_page("partials/set_details.html", "Account", user=current_user,
+        return render_page("partials/set_details.html", "Account", values=request.form,
                            error="Please enter your first and last name.")
     user_service.update_details(current_user.id, first_name, last_name)
     user = user_service.get_user(current_user.id)

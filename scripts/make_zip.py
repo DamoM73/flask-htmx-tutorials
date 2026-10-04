@@ -35,6 +35,11 @@ CHECKPOINTS = [
     "users/10_register",
     "users/11_login_logout",
     "users/12_link_visibility",
+    "account/13_account_page",
+    "account/14_set_details_design",
+    "account/15_set_details_code",
+    "account/16_user_service",
+    "account/17_account_navigation",
 ]
 
 # Files a lesson tells students to delete.

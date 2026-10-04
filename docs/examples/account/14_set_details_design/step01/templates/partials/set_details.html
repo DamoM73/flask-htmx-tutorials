@@ -9,9 +9,6 @@
             Last name
             <input type="text" name="last_name" value="{{ values.last_name or '' }}" placeholder="Enter last name">
         </label>
-        {% if error %}
-        <p class="error">{{ error }}</p>
-        {% endif %}
         <button type="submit">Save</button>
     </form>
 </article>
