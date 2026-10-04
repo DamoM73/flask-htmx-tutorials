@@ -1,0 +1,22 @@
+.error {
+    color: var(--pico-del-color);
+}
+
+.success {
+    color: var(--pico-ins-color);
+}
+
+nav a[aria-current="page"] {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer button {
+    margin-bottom: 0;
+}

@@ -1,0 +1,6 @@
+<h1>Calendar</h1>
+{% if chart %}
+{{ chart | safe }}
+{% else %}
+<p>You have no outstanding assessments to show.</p>
+{% endif %}

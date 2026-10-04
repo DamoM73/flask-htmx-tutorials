@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="htmx-config" content='{"refreshOnHistoryMiss": true}'>
+    <title>{{ title }} | StudyM8</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <script src="https://unpkg.com/htmx.org@2.0.11"></script>
+</head>
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="/" hx-get="/" hx-target="#content" hx-push-url="true"><strong>StudyM8</strong></a></li>
+            </ul>
+            <ul hx-target="#content" hx-push-url="true">
+                <li><a href="/" hx-get="/">Home</a></li>
+                <li><a href="/add" hx-get="/add">Add</a></li>
+                <li><a href="/calendar" hx-get="/calendar">Calendar</a></li>
+                <li><a href="/account" hx-get="/account">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="content" class="container">
+        {% include page %}
+    </main>
+</body>
+</html>

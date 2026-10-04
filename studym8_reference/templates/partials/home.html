@@ -1,0 +1,6 @@
+<h1>My Assessments</h1>
+{% for assessment in assessments %}
+{% include "partials/assessment_card.html" %}
+{% else %}
+<p>You have no outstanding assessments. <a href="/add" hx-get="/add" hx-target="#content" hx-push-url="true">Add one</a>.</p>
+{% endfor %}

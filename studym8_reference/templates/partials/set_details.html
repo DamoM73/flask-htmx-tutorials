@@ -1,0 +1,17 @@
+<article>
+    <h1>Set Details</h1>
+    <form hx-post="/account/details" hx-target="#content">
+        <label>
+            First name
+            <input type="text" name="first_name" value="{{ user.first_name or '' }}" placeholder="Enter first name">
+        </label>
+        <label>
+            Last name
+            <input type="text" name="last_name" value="{{ user.last_name or '' }}" placeholder="Enter last name">
+        </label>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <button type="submit">Save</button>
+    </form>
+</article>

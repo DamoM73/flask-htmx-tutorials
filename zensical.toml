@@ -1,0 +1,129 @@
+[project]
+site_name = "StudyM8 with Flask and HTMX"
+site_description = "Build a study planner web app in Python with Flask, HTMX, SQLite and Pico CSS, for Year 9/10 students using VS Code."
+site_author = "Damien Murtagh"
+site_url = "https://damom73.github.io/flask-htmx-tutorials/"
+repo_url = "https://github.com/DamoM73/flask-htmx-tutorials"
+repo_name = "DamoM73/flask-htmx-tutorials"
+copyright = "Content licensed under CC BY-NC-SA 4.0. Code licensed under GPLv3."
+docs_dir = "docs"
+extra_css = ["stylesheets/extra.css"]
+
+nav = [
+  { "Home" = "index.md" },
+  { "Start" = [
+    { "Introduction" = "start/introduction.md" },
+    { "How Websites Work" = "start/how_websites_work.md" },
+    { "StudyM8 Design" = "start/design.md" },
+    { "Setting Up" = "start/setup.md" },
+  ] },
+  { "Page Shell" = [
+    { "1. First Flask App" = "shell/01_first_flask_app.md" },
+    { "2. HTML and Templates" = "shell/02_html_templates.md" },
+    { "3. The Page Shell" = "shell/03_page_shell.md" },
+    { "4. Styling with Pico" = "shell/04_pico.md" },
+    { "5. Connecting Links with HTMX" = "shell/05_htmx_links.md" },
+    { "6. Page Titles" = "shell/06_page_titles.md" },
+    { "7. Show the Active Link" = "shell/07_active_link.md" },
+  ] },
+  { "Users" = [
+    { "8. Databases and SQL" = "users/08_databases_sql.md" },
+    { "9. Connecting Flask to SQLite" = "users/09_flask_sqlite.md" },
+    { "10. Register" = "users/10_register.md" },
+    { "11. Log In and Log Out" = "users/11_login_logout.md" },
+    { "12. Account Link Visibility" = "users/12_link_visibility.md" },
+  ] },
+  { "Account" = [
+    { "13. Account Page" = "account/13_account_page.md" },
+    { "14. Set Details Design" = "account/14_set_details_design.md" },
+    { "15. Set Details Code" = "account/15_set_details_code.md" },
+    { "16. User Service Module" = "account/16_user_service.md" },
+    { "17. Account Navigation" = "account/17_account_navigation.md" },
+  ] },
+  { "Assessments" = [
+    { "18. Assessments Table" = "assessments/18_assessments_table.md" },
+    { "19. Add Page Design" = "assessments/19_add_design.md" },
+    { "20. Add Page Code" = "assessments/20_add_code.md" },
+    { "21. Assessment Service Module" = "assessments/21_assessment_service.md" },
+    { "22. Prevent Unauthorised Access" = "assessments/22_unauthorised_access.md" },
+    { "23. Home Page Design" = "assessments/23_home_design.md" },
+    { "24. Home Page Code" = "assessments/24_home_code.md" },
+    { "25. Complete Assessments" = "assessments/25_complete.md" },
+    { "26. Edit Assessments" = "assessments/26_edit.md" },
+    { "27. Calendar Page" = "assessments/27_calendar.md" },
+    { "28. Welcome Page" = "assessments/28_welcome.md" },
+  ] },
+  { "Optimisation" = [
+    { "29. Optimisation" = "optimisation/29_optimisation.md" },
+    { "30. Fewer Requests" = "optimisation/30_fewer_requests.md" },
+    { "31. Fewer Database Connections" = "optimisation/31_fewer_connections.md" },
+    { "32. Caching the Chart" = "optimisation/32_caching_chart.md" },
+  ] },
+  { "Reference" = [
+    { "HTML" = "reference/html.md" },
+    { "Pico CSS" = "reference/pico.md" },
+    { "Jinja" = "reference/jinja.md" },
+    { "HTMX" = "reference/htmx.md" },
+    { "SQL" = "reference/sql.md" },
+    { "Flask" = "reference/flask.md" },
+    { "Common Errors" = "reference/common_errors.md" },
+    { "Finished App" = "reference/finished_app.md" },
+    { "Index of Topics" = "reference/index_of_topics.md" },
+    { "Licence" = "reference/licence.md" },
+  ] },
+]
+
+[project.theme]
+language = "en"
+logo = "assets/logo_header.png"
+favicon = "assets/favicon.ico"
+features = [
+  "content.code.copy",
+  "content.code.select",
+  "navigation.footer",
+  "navigation.indexes",
+  "navigation.instant",
+  "navigation.path",
+  "navigation.sections",
+  "navigation.tabs",
+  "navigation.top",
+  "navigation.tracking",
+  "search.highlight",
+]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.details = {}
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = "__span"
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.snippets.base_path = ["docs"]
+pymdownx.snippets.check_paths = true
+pymdownx.superfences = {}
