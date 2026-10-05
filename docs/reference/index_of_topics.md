@@ -30,3 +30,13 @@
 | Reducing database queries and connections | [30](../optimisation/30_fewer_queries.md), [31](../optimisation/31_fewer_connections.md) |
 | Caching | [32](../optimisation/32_caching_chart.md) |
 | Reading error messages | [Common Errors](common_errors.md) |
+| Images, tables, contact links, maps and more input types | [HTML reference](html.md#more-for-your-own-website) |
+| Colour themes, dropdown menus, accordions and modals | [Pico reference](pico.md#more-for-your-own-website) |
+| Macros, loop variables, built-in filters and times | [Jinja reference](jinja.md#more-for-your-own-website) |
+| Deleting, filters, live search and load more with HTMX | [HTMX reference](htmx.md#more-for-your-own-website) |
+| Dates and times, LIMIT, joins, many-to-many, counting and searching | [SQL reference](sql.md#more-for-your-own-website) |
+| Public and member pages, admin roles, uploads, redirects and error pages | [Flask reference](flask.md#more-for-your-own-website) |
+| Running the website on our laptop | [Flask reference](flask.md#running-the-website-on-our-laptop) |
+| Web design principles, site maps and wireframes | [Web Design Principles](web_design.md) |
+| Accessibility | [Accessibility](accessibility.md) |
+| Requirements, test plans, testing logs, usability testing and evaluation | [Test Plans](test_plans.md) |

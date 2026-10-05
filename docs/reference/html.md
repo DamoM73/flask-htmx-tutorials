@@ -116,6 +116,149 @@ Some elements, like `<input>` and `<meta>`, have no content and no closing tag.
 | `aria-current="page"` | marks the link to the current page, for screen readers and our CSS |
 | `lang` | the language of the page |
 
+## More for your own website
+
+StudyM8 doesn't need the elements below, but most community group websites do.
+
+### Images
+
+```html
+<img src="{{ url_for('static', filename='images/team-photo.jpg') }}"
+     alt="The under 14s team holding the 2026 premiership trophy"
+     width="800" height="450">
+```
+
+| Attribute | Purpose |
+| :-- | :-- |
+| `src` | the image file; keep images in the ***static*** folder and use `url_for` |
+| `alt` | a description for people who can't see the image; use `alt=""` for decorative images |
+| `width`, `height` | the image's size, so the page doesn't jump around while it loads |
+
+See [Accessibility](accessibility.md#images) for writing good `alt` text, and [Flask](flask.md#file-uploads) for letting admins upload images.
+
+### Tables
+
+Use a table for information with rows and columns, like a training schedule. Don't use tables for page layout.
+
+```html
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Time</th>
+            <th scope="col">Team</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Tuesday</td>
+            <td>5:30 pm</td>
+            <td>Under 12s</td>
+        </tr>
+    </tbody>
+</table>
+```
+
+| Element | Purpose |
+| :-- | :-- |
+| `<table>` | the whole table |
+| `<thead>`, `<tbody>` | the heading rows and the data rows |
+| `<tr>` | a table row |
+| `<th scope="col">` | a column heading; `scope` tells screen readers which cells it describes |
+| `<td>` | a data cell |
+
+In a template, a `{% for %}` loop makes one `<tr>` per row from the database.
+
+### Contact links
+
+```html
+<a href="mailto:secretary@example.org">secretary@example.org</a>
+<a href="tel:+61730001234">(07) 3000 1234</a>
+<a href="https://www.example.org" target="_blank" rel="noopener">Our sponsor</a>
+```
+
+| Link | Does |
+| :-- | :-- |
+| `mailto:` | opens the user's email app with the address filled in |
+| `tel:` | phones the number on a mobile; write the number in international form with no spaces |
+| `target="_blank"` | opens the link in a new tab; use it for links to other websites, and add `rel="noopener"` for security |
+
+### Embedded maps and videos
+
+An `<iframe>` shows another web page inside ours. Google Maps and YouTube both have a **Share → Embed** option that gives the code to copy.
+
+```html
+<iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450"
+        title="Map showing the club's home ground" loading="lazy"></iframe>
+```
+
+- `title` → describes the frame for screen readers (required for accessibility)
+- `loading="lazy"` → the browser only loads it when it scrolls into view
+
+### More input types
+
+| Input | Shows | Value sent |
+| :-- | :-- | :-- |
+| `<input type="time">` | a time picker | `HH:MM` in 24-hour time, for example `17:30` |
+| `<input type="datetime-local">` | a date and time picker | `YYYY-MM-DDTHH:MM`, for example `2026-03-14T09:00` |
+| `<input type="number" min="0" max="50">` | a number box | the number, as text |
+| `<input type="url">` | a text box that checks for a web address | what was typed |
+| `<input type="tel">` | a text box with a phone keypad on mobiles | what was typed |
+| `<input type="search">` | a search box | what was typed |
+| `<input type="file" accept="image/*">` | a file chooser | the file (see [Flask file uploads](flask.md#file-uploads)) |
+
+A `<select>` is a drop-down list:
+
+```html
+<label>
+    Team
+    <select name="team">
+        <option value="">All teams</option>
+        <option value="u12">Under 12s</option>
+        <option value="u14" selected>Under 14s</option>
+    </select>
+</label>
+```
+
+The `value` of the chosen `<option>` is sent. `selected` chooses an option when the page loads.
+
+### Page structure
+
+```html
+<body>
+    <header class="container">...menu...</header>
+    <main class="container">
+        <section>
+            <h2>Upcoming events</h2>
+            ...
+        </section>
+        <section>
+            <h2>Latest news</h2>
+            ...
+        </section>
+    </main>
+    <footer class="container">
+        <p>Bayside Junior Football Club | <a href="/contact">Contact us</a></p>
+    </footer>
+</body>
+```
+
+| Element | Purpose |
+| :-- | :-- |
+| `<section>` | a themed part of a page, usually with its own heading |
+| `<footer>` (outside `<main>`) | the site-wide footer, often with contact details; put it in ***base.html*** so every page has it |
+| `<ol>` | a numbered list, for steps in order |
+| `<time datetime="2026-03-14T09:00">` | marks a date or time so computers can read it, while showing it any way we like |
+| `<blockquote>` | a quote, such as a testimonial from a member |
+
+### Information for search engines
+
+```html
+<meta name="description" content="Bayside Junior Football Club: training times, fixtures, news and how to join.">
+```
+
+Search engines show this description under the page's title in their results, which helps people who want to join find the group.
+
 ## Documentation
 
 Documentation is the official guide written by the people who made the code library, and we can use it to look up every element and attribute, including ones that aren't covered on this page.
