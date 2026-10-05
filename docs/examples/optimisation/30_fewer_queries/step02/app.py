@@ -10,7 +10,7 @@ import user_service
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "change-this-to-a-long-random-string"
-db.init_app(app)
+app.cli.add_command(db.init_db_command)
 
 login_manager = LoginManager(app)
 login_manager.login_view = "login"

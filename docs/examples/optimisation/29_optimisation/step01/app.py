@@ -10,7 +10,7 @@ import user_service
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "change-this-to-a-long-random-string"
-db.init_app(app)
+app.cli.add_command(db.init_db_command)
 
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
@@ -105,8 +105,9 @@ def assessment_card(assessment_id):
 @app.route("/assessments/<int:assessment_id>/complete", methods=["POST"])
 @login_required
 def complete(assessment_id):
-    if not assessment_service.set_completed(assessment_id, current_user.id, 1):
+    if assessment_service.get_assessment(assessment_id, current_user.id) is None:
         abort(404)
+    assessment_service.set_completed(assessment_id, current_user.id, 1)
     return ""
 
 
@@ -129,8 +130,8 @@ def edit(assessment_id):
                                          values["due_date"], completed)
     if completed:
         return ""
-    values["id"] = assessment_id
-    return render_template("partials/assessment_card.html", assessment=values)
+    assessment = assessment_service.get_assessment(assessment_id, current_user.id)
+    return render_template("partials/assessment_card.html", assessment=assessment)
 
 
 @app.route("/calendar")
@@ -157,9 +158,8 @@ def set_details():
         return render_page("partials/set_details.html", "Account", values=request.form,
                            error="Please enter your first and last name.")
     user_service.update_details(current_user.id, first_name, last_name)
-    current_user.first_name = first_name
-    current_user.last_name = last_name
-    return render_page("partials/account.html", "Account", push_url="/account", user=current_user)
+    user = user_service.get_user(current_user.id)
+    return render_page("partials/account.html", "Account", push_url="/account", user=user)
 
 
 @app.route("/register", methods=["GET", "POST"])

@@ -28,8 +28,9 @@ from app import app
 client = app.test_client()
 routes = [r for r in sys.argv[1:]]
 source = Path("app.py").read_text()
-if "init_db_command" in source:
-    result = app.test_cli_runner().invoke(args=["init-db"])
+if Path("schema.sql").exists() and Path("db.py").exists() and "import db" in source:
+    with app.app_context():
+        result = app.test_cli_runner().invoke(args=["init-db"])
     assert "Database created." in result.output, result.output
 HX = {"HX-Request": "true"}
 if 'route("/register"' in source:
@@ -92,6 +93,7 @@ if '/edit", methods' in source:
     assert b"English" in client.get("/assessments/1", headers=HX).data
 if "get_chart" in source:
     assert b"Assessment Schedule" in client.get("/calendar", headers=HX).data
+    assert b"Assessment Schedule" in client.get("/calendar", headers=HX).data
 if 'route("/assessments/<int:assessment_id>' in source:
     client.post("/logout", headers=HX)
     form = {"email": "other@school.com", "password": "password1", "confirm": "password1"}
@@ -128,7 +130,7 @@ def main():
             result = subprocess.run([sys.executable, "-c", TEST, *routes], cwd=folder,
                                     capture_output=True, text=True)
             if result.returncode == 0:
-                print(f"PASS {lesson}: {result.stdout.strip()}")
+                print(f"PASS {lesson}: {result.stdout.strip().splitlines()[-1]}")
             else:
                 failed += 1
                 print(f"FAIL {lesson}")

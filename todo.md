@@ -12,4 +12,4 @@
 
 ## Testing
 
-- Work through lessons 1–28 on a school laptop, checking the Setting Up steps and the `flask run --debug` output on Windows.
+- Work through all 32 lessons on a school laptop, checking the Setting Up steps and the `flask run --debug` output on Windows.

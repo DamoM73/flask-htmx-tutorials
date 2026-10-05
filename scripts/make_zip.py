@@ -51,6 +51,10 @@ CHECKPOINTS = [
     "assessments/26_edit",
     "assessments/27_calendar",
     "assessments/28_welcome",
+    "optimisation/29_optimisation",
+    "optimisation/30_fewer_queries",
+    "optimisation/31_fewer_connections",
+    "optimisation/32_caching_chart",
 ]
 
 # Files a lesson tells students to delete.

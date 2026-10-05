@@ -55,8 +55,8 @@ nav = [
   ] },
   { "Optimisation" = [
     { "29. Optimisation" = "optimisation/29_optimisation.md" },
-    { "30. Fewer Requests" = "optimisation/30_fewer_requests.md" },
-    { "31. Fewer Database Connections" = "optimisation/31_fewer_connections.md" },
+    { "30. Fewer Database Queries" = "optimisation/30_fewer_queries.md" },
+    { "31. One Connection per Request" = "optimisation/31_fewer_connections.md" },
     { "32. Caching the Chart" = "optimisation/32_caching_chart.md" },
   ] },
   { "Reference" = [

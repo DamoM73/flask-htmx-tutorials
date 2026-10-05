@@ -3,8 +3,6 @@ import plotly.express as px
 
 from db import get_db
 
-chart_cache = {}
-
 
 def add_assessment(user_id, subject, details, start_date, due_date):
     conn = get_db()
@@ -14,7 +12,6 @@ def add_assessment(user_id, subject, details, start_date, due_date):
         (user_id, subject, details, start_date, due_date),
     )
     conn.commit()
-    chart_cache.pop(user_id, None)
 
 
 def get_assessments(user_id):
@@ -47,7 +44,6 @@ def set_completed(assessment_id, user_id, completed):
         (completed, assessment_id, user_id),
     )
     conn.commit()
-    chart_cache.pop(user_id, None)
     return cursor.rowcount == 1
 
 
@@ -60,14 +56,9 @@ def update_assessment(assessment_id, user_id, subject, details, start_date, due_
         (subject, details, start_date, due_date, completed, assessment_id, user_id),
     )
     conn.commit()
-    chart_cache.pop(user_id, None)
 
 
 def get_chart(user_id):
-    if user_id in chart_cache:
-        print("Using cached chart")
-        return chart_cache[user_id]
-    print("Building new chart from database")
     assessments = get_assessments(user_id)
     if not assessments:
         return None
@@ -89,5 +80,4 @@ def get_chart(user_id):
         title="Assessment Schedule",
     )
     fig.update_yaxes(title_text="")
-    chart_cache[user_id] = fig.to_html(full_html=False, include_plotlyjs=False)
-    return chart_cache[user_id]
+    return fig.to_html(full_html=False, include_plotlyjs=False)
