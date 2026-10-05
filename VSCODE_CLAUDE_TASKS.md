@@ -20,13 +20,9 @@ This site was started in Cowork, which can only create and overwrite files in th
 - **Writing style:** Australian English, Year 9/10, Damien's inclusive "we" voice. Instructions follow "Open ***templates/base.html***, change the highlighted code below and save it." / "Create a new file, add the code below and save it as ***x*** in the ***y*** folder." Code explanations are `- **line n** → full sentence ending in a full stop.`; ranges use an en dash. Lessons use `## Introduction`, an optional `## Planning` (IPO table or numbered reasoning), then coding sections. No Exercises or Commit and push sections; PRIMM **Modify** prompts take their place. Error messages are real (made by breaking the code), with Windows-style paths, in ```` ``` { .text .error linenums="1" } ```` blocks followed by a line-by-line breakdown.
 - **Plan:** the unit plan is in Damien's Claude project as `claude/Flask HTMX StudyM8 unit plan.md`, with progress in `claude/flask-htmx-tutorials_progress.md`.
 
-## 1. Check the deploy workflow
+## 1–2. Deploy workflow and GitHub Pages — done
 
-`.github/workflows/deploy.yml` builds the zip and the site with Zensical and deploys with GitHub Pages Actions on pushes to `main`. If it isn't in the repo (Cowork may not be able to write inside `.github/`), create it from Space Rescue's `deploy.yml`. Confirm each action version exists on GitHub before committing.
-
-## 2. Turn on GitHub Pages — Confirm first
-
-Set Pages to deploy from GitHub Actions: **Settings** → **Pages** → **Source** → **GitHub Actions**, or `gh api -X POST repos/DamoM73/flask-htmx-tutorials/pages -f build_type=workflow`. Watch the **Deploy site** run, then check <https://damom73.github.io/flask-htmx-tutorials/>.
+`.github/workflows/deploy.yml` was added on GitHub (5 Oct 2026) and Pages is set to deploy from GitHub Actions. The first **Deploy site** run passed and the site is live at <https://damom73.github.io/flask-htmx-tutorials/>. No action needed.
 
 ## 3. Final checks
 
