@@ -66,6 +66,6 @@ Under each error message, the lesson breaks it down line by line, so we learn ho
 
 ## Tutorial files
 
-If your app stops working and you can't find the problem, you can start again from the end of any lesson. [Download the checkpoints](downloads/studym8_checkpoints.zip) and unzip them. There's a folder for each lesson, holding all of StudyM8's files as they are at the end of that lesson.
+If our app stops working and we can't find the problem, we can start again from the end of any lesson. [Download the checkpoints](downloads/studym8_checkpoints.zip) and unzip them. There's a folder for each lesson, holding all of StudyM8's files as they are at the end of that lesson.
 
-To use a checkpoint, copy the files from the lesson's folder into your ***studym8*** folder, replacing the files that are already there. Don't copy over your ***.venv*** folder.
+To use a checkpoint, copy the files from the lesson's folder into our ***studym8*** folder, replacing the files that are already there. Don't copy over our ***.venv*** folder.

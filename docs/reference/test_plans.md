@@ -7,7 +7,7 @@
     - how to write a test plan, record a testing log and run a usability test
     - how to use test results to refine and evaluate a website
 
-Testing shows whether a website does what it's meant to do. It isn't something to leave until the end: test each feature as soon as it's built, and fix problems while the code is fresh in your mind.
+Testing shows whether a website does what it's meant to do. It isn't something to leave until the end: test each feature as soon as it's built, and fix problems while the code is fresh in our minds.
 
 ## Requirements and success criteria
 
@@ -65,7 +65,7 @@ Write the test plan **before** testing, from the requirements. Each test says wh
 
 ## Testing log
 
-Record what actually happened each time a test is run, including the date. When a test fails, record what you'll do about it, then **run the test again** after fixing it.
+Record what actually happened each time a test is run, including the date. When a test fails, record what we'll do about it, then **run the test again** after fixing it.
 
 | Date | Requirement | Actual result | Pass/fail | Action if failed |
 | :-- | :-- | :-- | :-- | :-- |
@@ -114,7 +114,7 @@ In the Evaluate stage, go back to every requirement and judge whether the finish
 | R1 | visitors can see upcoming events | Yes | testing log 13/05: only future events listed, in date order |
 | R4 | easy to use on a phone | Partly | 4 of 5 testers found training times in under 30 s; one took 42 s before the menu was changed |
 
-Finish with improvements that could be made with more time, and what you'd do differently in the development process.
+Finish with improvements that could be made with more time, and what we'd do differently in the development process.
 
 ## Automated tests (extension)
 

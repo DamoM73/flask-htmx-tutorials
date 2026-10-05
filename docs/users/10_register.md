@@ -175,8 +175,8 @@ Then change the highlighted code at the end of the `register` function.
     - **line 67** → closes the connection.
     - **line 68** → shows the form with a message saying the account was created.
 
-!!! warning "Did you create the database?"
-    If you skipped `flask init-db` in the last lesson, submitting the form shows an error page, and the terminal shows a long error ending like this:
+!!! warning "Did we create the database?"
+    If we skipped `flask init-db` in the last lesson, submitting the form shows an error page, and the terminal shows a long error ending like this:
 
     ``` { .text .error linenums="1" }
       File "C:\Users\student\Documents\studym8\app.py", line 57, in register

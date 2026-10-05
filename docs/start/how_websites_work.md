@@ -83,6 +83,8 @@ A web page is made from three languages, each with its own job:
 - **CSS** → how the page looks (colours, fonts, spacing, layout)
 - **JavaScript** → how the page behaves when we interact with it
 
+We won't write any JavaScript ourselves. Instead, we'll use two JavaScript libraries that other people have written: HTMX and Plotly.js. We control them with HTML attributes and Python, so all our code stays in HTML and Python.
+
 ## Where our tools fit
 
 Now that we know the parts of a website, let's place each of our tools:
@@ -92,10 +94,11 @@ Now that we know the parts of a website, let's place each of our tools:
 | backend | Python and **Flask** | receives requests, runs our code and sends back responses |
 | backend | **Jinja** | builds HTML pages by putting our data into templates |
 | backend | **SQLite** and SQL | stores and retrieves our users and assessments |
-| backend | **Plotly** | draws the calendar chart |
-| frontend | HTML | the content of our pages |
+| backend | **Plotly** | builds the calendar chart in Python |
+| frontend | **HTML** | the content of our pages |
 | frontend | **Pico CSS** | the styling of our pages |
-| frontend | **HTMX** | swaps parts of the page when we click links and submit forms |
+| frontend | **HTMX** (JavaScript) | swaps parts of the page when we click links and submit forms |
+| frontend | **Plotly.js** (JavaScript) | draws the calendar chart in the browser |
 
 !!! tip "Why HTMX?"
     Normally, every time we click a link the browser asks for a whole new page and redraws everything, even the parts that didn't change, like the menu. HTMX lets the browser ask the server for just the part of the page that needs to change, and swap it in. This makes our website feel faster and smoother, and we still write it all in HTML and Python.

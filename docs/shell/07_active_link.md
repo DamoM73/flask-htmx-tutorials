@@ -103,6 +103,6 @@ studym8/
     4. Now **modify** ***style.css*** so the active link is also a different colour. Search the web for "CSS color property" to find out how.
 
 !!! tip "If the style doesn't change"
-    Browsers save copies of stylesheets so they don't have to download them every time. If your changes to ***style.css*** don't show, press ++ctrl+f5++ to reload the page and its stylesheets.
+    Browsers save copies of stylesheets so they don't have to download them every time. If our changes to ***style.css*** don't show, press ++ctrl+f5++ to reload the page and its stylesheets.
 
 The page shell is finished. In the next section we'll add a database and user accounts.

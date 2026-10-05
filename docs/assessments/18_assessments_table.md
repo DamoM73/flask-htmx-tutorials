@@ -73,8 +73,8 @@ Stop the server, then run:
 flask init-db
 ```
 
-!!! warning "This deletes your users"
-    `flask init-db` deletes every table and creates them again, so all the accounts you've registered are gone. You'll need to register again.
+!!! warning "This deletes our users"
+    `flask init-db` deletes every table and creates them again, so all the accounts we've registered are gone. We'll need to register again.
 
 Now let's check the foreign key works. Start the Flask shell with `flask shell`, then try to add an assessment for user 99, who doesn't exist:
 

@@ -66,7 +66,7 @@ Open ***user_service.py*** and delete every line that says:
 Then do the same in ***assessment_service.py***. There are five in ***user_service.py*** and five in ***assessment_service.py***.
 
 !!! warning "Cannot operate on a closed database"
-    If you miss one, a request that makes more than one query will crash with `sqlite3.ProgrammingError: Cannot operate on a closed database.` Search each file for `close` (++ctrl+f++) to check you've got them all.
+    If we miss one, a request that makes more than one query will crash with `sqlite3.ProgrammingError: Cannot operate on a closed database.` Search each file for `close` (++ctrl+f++) to check we've got them all.
 
 !!! primm "PRIMM"
     1. **Predict** how many connections each request will open now.

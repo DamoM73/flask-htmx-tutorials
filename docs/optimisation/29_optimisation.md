@@ -87,7 +87,7 @@ Opening a database connection takes time, so let's count how many times we do it
 ??? note "Code explanation"
     - **line 11** → prints a message every time a connection is opened.
 
-Now use StudyM8: go to Home, complete an assessment, edit one, change your name and open the Calendar twice. The terminal shows something like this (your times will be different):
+Now use StudyM8: go to Home, complete an assessment, edit one, change our name and open the Calendar twice. The terminal shows something like this (our times will be different):
 
 ```text
 Opening a database connection

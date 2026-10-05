@@ -20,7 +20,7 @@ We're going to build **StudyM8**, a study planner for students. StudyM8 lets use
 - tick off assessments as they complete them
 - see all their outstanding assessments on a calendar chart, so they can spot the weeks when the pressure is on
 
-You can see what the finished app looks like on the [Finished App](../reference/finished_app.md) page.
+We can see what the finished app looks like on the [Finished App](../reference/finished_app.md) page.
 
 ## The tools
 
@@ -33,15 +33,12 @@ Real websites are built from a few different technologies working together. We'l
 | **HTML** | the language that describes what's on each page |
 | **Jinja** | the template language Flask uses to put our data into HTML |
 | **Pico CSS** | a ready-made stylesheet that makes our HTML look good |
-| **HTMX** | a small library that swaps parts of a page without reloading the whole page |
+| **HTMX** | a small JavaScript library that swaps parts of a page without reloading the whole page |
 | **SQLite** | a database that stores our users and assessments in a single file |
 | **SQL** | the language we use to talk to the database |
-| **Plotly** | a Python library that draws our calendar chart |
+| **Plotly** | a Python library that builds our calendar chart, with a JavaScript partner (Plotly.js) that draws it in the browser |
 
 That looks like a lot, but we don't need to learn them all at once. We'll learn each one when StudyM8 needs it, and the [Reference](../reference/html.md) section has a summary of each tool we can come back to.
-
-!!! tip "If you've used Anvil"
-    StudyM8 was first built with Anvil, which hides a lot of the web from us. This time we're building it the way most websites are built: we write the HTML, run our own server and design our own database. It's more work, but we'll understand every part of our website.
 
 ## Required knowledge
 

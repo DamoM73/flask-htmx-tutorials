@@ -89,7 +89,7 @@ Many people use only a keyboard. Try using the site with only:
 Check that:
 
 - every link, button and input can be reached, in a sensible order
-- you can always see which element has **focus** (Pico shows an outline)
+- we can always see which element has **focus** (Pico shows an outline)
 - dropdowns and dialogs can be opened and closed with the keyboard
 
 ### Tables

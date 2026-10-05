@@ -10,7 +10,7 @@ We'll build StudyM8 in **VS Code** on our own computer. Before we start coding, 
 
 ## Install Python and VS Code
 
-If Python and VS Code are already on your computer, skip to [Create the project folder](#create-the-project-folder).
+If Python and VS Code are already on our computer, skip to [Create the project folder](#create-the-project-folder).
 
 1. Download and install Python from [python.org](https://www.python.org/downloads/).
     - **Why:** Flask is a Python library, so we need Python to run our server.
@@ -25,10 +25,10 @@ If Python and VS Code are already on your computer, skip to [Create the project 
 
 ## Create the project folder
 
-1. Create a new folder called ***studym8*** somewhere easy to find, such as your ***Documents*** folder.
+1. Create a new folder called ***studym8*** somewhere easy to find, such as our ***Documents*** folder.
     - **Why:** all of StudyM8's files will live in this folder.
     - **Expected result:** an empty ***studym8*** folder.
-2. In VS Code, choose **File** → **Open Folder…** and open the ***studym8*** folder. If VS Code asks whether you trust the authors of the files, choose **Yes**.
+2. In VS Code, choose **File** → **Open Folder…** and open the ***studym8*** folder. If VS Code asks whether we trust the authors of the files, choose **Yes**.
     - **Why:** VS Code works with everything in the open folder, and the terminal will start in this folder.
     - **Expected result:** the Explorer panel on the left shows **STUDYM8** with no files.
 
@@ -36,7 +36,7 @@ If Python and VS Code are already on your computer, skip to [Create the project 
 
 A **virtual environment** is a private copy of Python just for this project. The libraries we install go into the virtual environment rather than into the computer's main Python, so different projects can't interfere with each other.
 
-1. Press ++ctrl+shift+p++, type **Python: Create Environment** and press ++enter++. Choose **Venv**, then choose the Python version you installed.
+1. Press ++ctrl+shift+p++, type **Python: Create Environment** and press ++enter++. Choose **Venv**, then choose the Python version we installed.
     - **Why:** this creates the virtual environment in a folder called ***.venv*** inside our project.
     - **Expected result:** after a few seconds a ***.venv*** folder appears in the Explorer panel.
 2. Choose **Terminal** → **New Terminal**.
@@ -62,7 +62,7 @@ A **virtual environment** is a private copy of Python just for this project. The
     flask --version
     ```
 
-    - **Expected result:** something like the lines below. Your version numbers might be a little different.
+    - **Expected result:** something like the lines below. Our version numbers might be a little different.
 
     ```text
     Python 3.13.7
