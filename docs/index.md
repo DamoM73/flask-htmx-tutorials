@@ -62,7 +62,7 @@ Traceback (most recent call last):
 jinja2.exceptions.TemplateNotFound: index.html
 ```
 
-Under each error message, the lesson breaks it down line by line, so we learn how to read the error and fix our code.
+Under each error message, the lesson breaks it down line by line, so we learn how to read the error and fix our code. The [Common Errors](reference/common_errors.md) page collects the errors we're most likely to see.
 
 ## Tutorial files
 
